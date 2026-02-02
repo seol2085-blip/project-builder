@@ -1,4 +1,18 @@
+:root {
+    --background-color: #fff;
+    --text-color: #000;
+    --number-bg-color: #eee;
+}
+
+[data-theme="dark"] {
+    --background-color: #333;
+    --text-color: #fff;
+    --number-bg-color: #555;
+}
+
 body {
+    background-color: var(--background-color);
+    color: var(--text-color);
     font-family: sans-serif;
     display: flex;
     flex-direction: column;
@@ -15,7 +29,7 @@ body {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #eee;
+    background-color: var(--number-bg-color);
     display: flex;
     justify-content: center;
     align-items: center;

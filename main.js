@@ -1,10 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
     const numbersContainer = document.getElementById('numbers-container');
     const generateBtn = document.getElementById('generate-btn');
+    const themeToggleBtn = document.getElementById('theme-toggle-btn');
 
     generateBtn.addEventListener('click', () => {
         generateNumbers();
     });
+
+    themeToggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+
+    function loadTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+    }
 
     function generateNumbers() {
         numbersContainer.innerHTML = '';
@@ -23,4 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
             numbersContainer.appendChild(numberElement);
         });
     }
+
+    loadTheme();
 });
