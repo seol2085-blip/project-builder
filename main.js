@@ -44,4 +44,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     loadTheme();
+    loadDisqus();
+
+    function loadDisqus() {
+        // We need to check if the disqus_thread element exists on the page
+        if (!document.getElementById('disqus_thread')) {
+            return;
+        }
+        var disqus_config = function () {
+            this.page.url = window.location.href;
+            this.page.identifier = window.location.pathname;
+        };
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://sseol.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+    }
 });
